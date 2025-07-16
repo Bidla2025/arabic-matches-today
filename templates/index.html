@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>مباريات اليوم</title>
+    <style>
+        body { font-family: Tahoma; background: #f9f9f9; text-align: center; }
+        .containerMatch { background: #fff; margin: 10px auto; width: 90%; max-width: 600px; border: 1px solid #ddd; border-radius: 10px; padding: 10px; }
+        .Match { display: flex; justify-content: space-between; align-items: center; padding: 10px; }
+        .fareq { display: flex; flex-direction: column; align-items: center; width: 30%; }
+        .Imagee img { border-radius: 50%; }
+        .asm { margin-top: 5px; font-weight: bold; }
+        .Nateja { width: 30%; text-align: center; }
+        .natej { font-size: 18px; font-weight: bold; margin: 5px 0; }
+        ul { list-style: none; padding: 0; margin: 10px 0 0; }
+        li { font-size: 14px; color: #555; }
+    </style>
+</head>
+<body>
+    <h1>مباريات اليوم</h1>
+    {% for m in matches %}
+    <!-- [ {{m.home}} ضد {{m.away}} ] -->
+    <div class="containerMatch">
+      <a href="#" title="مشاهدة مباراة {{m.home}} و {{m.away}} اليوم بث مباشر">
+        <div class="Match">
+          <div class="fareq">
+            <div class="Imagee">
+              <img src="{{m.logo_home}}" alt="{{m.home}}" width="70" height="70">
+            </div>
+            <div class="asm">{{m.home}}</div>
+          </div>
+          <div class="Nateja">
+            <div class="matchHour"></div>
+            <div class="natej">{{m.result}}</div>
+            <div class="matchDate" data-start="{{m.start_time}}"></div>
+          </div>
+          <div class="fareq">
+            <div class="Imagee">
+              <img src="{{m.logo_away}}" alt="{{m.away}}" width="70" height="70">
+            </div>
+            <div class="asm">{{m.away}}</div>
+          </div>
+        </div>
+        <div class="Show"></div>
+        <ul>
+          <li>غير معروف</li>
+          <li>غير معروف</li>
+          <li>{{m.league}}</li>
+        </ul>
+      </a>
+    </div>
+    {% endfor %}
+</body>
+</html>
