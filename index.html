@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIDLAStream</title>
     <style>
-        body { font-family: sans-serif; background: #0f0f12; color: white; padding: 20px; }
-        .match-card { background: #1f1f24; padding: 15px; margin: 10px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-        button { background: #22c55e; border: none; padding: 10px; color: white; border-radius: 5px; cursor: pointer; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0a0a0c; color: white; margin: 0; padding: 10px; }
+        header { text-align: center; padding: 20px; border-bottom: 2px solid #22c55e; margin-bottom: 20px; }
+        .match-card { background: #1f1f24; padding: 15px; margin: 10px 0; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; }
+        button { background: #22c55e; border: none; padding: 10px 20px; color: white; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #16a34a; }
+        #player-container { width: 100%; margin-top: 20px; text-align: center; }
+        iframe { width: 100%; height: 300px; border-radius: 12px; border: none; }
     </style>
 </head>
 <body>
-    <h1>BIDLAStream</h1>
-    <div id="matches">Loading matches...</div>
-    <iframe id="player" width="100%" height="400px" style="margin-top:20px; border:none;"></iframe>
+    <header><h1>BIDLAStream</h1></header>
+    <div id="matches">جاري تحميل المباريات...</div>
+    <div id="player-container"><iframe id="player"></iframe></div>
 
     <script>
         fetch('matches.json')
@@ -24,7 +28,7 @@
                 Object.values(data).forEach(m => {
                     container.innerHTML += `<div class="match-card">
                         <span>${m.title}</span>
-                        <button onclick="document.getElementById('player').src='${m.embed_url}'">Watch Now</button>
+                        <button onclick="document.getElementById('player').src='${m.embed_url}'">مشاهدة</button>
                     </div>`;
                 });
             });
